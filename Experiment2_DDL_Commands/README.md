@@ -105,123 +105,205 @@ CREATE TABLE Table_Name (
 
 **Question 1**
 --
--- Paste Question 1 here
+Create a table named Orders with the following constraints:
+OrderID as INTEGER should be the primary key.
+OrderDate as DATE should be not NULL.
+CustomerID as INTEGER should be a foreign key referencing Customers(CustomerID).
 
 ```sql
--- Paste your SQL code below for Question 1
+CREATE TABLE Orders ( OrderID INTEGER PRIMARY KEY, OrderDate DATE NOT NULL, CustomerID INTEGER, FOREIGN KEY (CustomerID) REFERENCES Customers(CustomerID) ); 
 ```
 
 **Output:**
 
-![Output1](output.png)
+<img width="1267" height="366" alt="image" src="https://github.com/user-attachments/assets/552ea348-27c6-4855-9a85-b77fa57c4af6" />
+
 
 **Question 2**
 ---
--- Paste Question 2 here
+Write a SQL query to Add a new column named "discount" with the data type DECIMAL(5,2) to the "customer" table.
+
+Sample table: customer
+
+ customer_id |   cust_name    |    city    | grade | salesman_id 
+-------------+----------------+------------+-------+-------------
+        3002 | Nick Rimando   | New York   |   100 |        5001
+        3007 | Brad Davis     | New York   |   200 |        5001
+        3005 | Graham Zusi    | California |   200 |        5002
 
 ```sql
--- Paste your SQL code below for Question 2
+ALTER TABLE customer ADD discount DECIMAL(5,2);
 ```
 
 **Output:**
 
-![Output2](output.png)
+<img width="866" height="436" alt="image" src="https://github.com/user-attachments/assets/cd9e8aac-bd3b-4b5b-8da6-499bc893d21c" />
+
 
 **Question 3**
 ---
--- Paste Question 3 here
+Insert the following products into the Products table:
 
+Name        Category     Price       Stock
+----------  -----------  ----------  ----------
+Smartphone  Electronics  800         150
+Headphones  Accessories  200         300
+For example:
+
+Test	Result
+SELECT Name, Category, Price, Stock FROM Products;
+
+Name        Category     Price       Stock
+----------  -----------  ----------  ----------
+Smartphone  Electronics  800         150
+Headphones  Accessories  200         300
 ```sql
--- Paste your SQL code below for Question 3
+INSERT INTO Products (Name, Category, Price, Stock) VALUES ('Smartphone', 'Electronics', 800, 150), ('Headphones', 'Accessories', 200, 300);
 ```
 
 **Output:**
+<img width="874" height="415" alt="image" src="https://github.com/user-attachments/assets/1926b2d8-0524-493d-b9dc-7e5a75609af8" />
 
-![Output3](output.png)
 
 **Question 4**
 ---
--- Paste Question 4 here
+Insert all customers from Old_customers into Customers
+
+Table attributes are CustomerID, Name, Address, Email
+
+For example:
+
+Test	Result
+select * from Customers;
+CustomerID  Name             Address         Email
+----------  ---------------  --------------  ---------------------
+301         Michael Johnson  123 Elm Street  michael.j@example.com
+302         Sarah Lee        456 Oak Avenue  sarah.lee@example.com
+303         David Wilson     789 Pine Road   david.w@example.com
 
 ```sql
--- Paste your SQL code below for Question 4
+INSERT INTO Customers (CustomerID, Name, Address ,Email)
+SELECT CustomerID,Name, Address , Email
+FROM Old_customers;
 ```
 
 **Output:**
 
-![Output4](output.png)
+<img width="892" height="393" alt="image" src="https://github.com/user-attachments/assets/78fe8d52-d460-4d5b-8615-1aad4ff1dd91" />
+
 
 **Question 5**
 ---
--- Paste Question 5 here
+Create a new table named contacts with the following specifications:
+contact_id as INTEGER and primary key.
+first_name as TEXT and not NULL.
+last_name as TEXT and not NULL.
+email as TEXT.
+phone as TEXT and not NULL with a check constraint to ensure the length of phone is at least 10 characters.
 
 ```sql
--- Paste your SQL code below for Question 5
-```
+CREATE TABLE contacts (
+    contact_id INTEGER PRIMARY KEY,
+    first_name TEXT NOT NULL,
+    last_name TEXT NOT NULL,
+    email TEXT,
+    phone TEXT NOT NULL CHECK (LENGTH(phone) >= 10)
+);
 
 **Output:**
 
-![Output5](output.png)
+<img width="876" height="382" alt="image" src="https://github.com/user-attachments/assets/a1531876-a387-43f5-9e2f-6317972d8057" />
+
 
 **Question 6**
 ---
--- Paste Question 6 here
+Create a new table named item with the following specifications and constraints:
+item_id as TEXT and as primary key.
+item_desc as TEXT.
+rate as INTEGER.
+icom_id as TEXT with a length of 4.
+icom_id is a foreign key referencing com_id in the company table.
+The foreign key should cascade updates and deletes.
+item_desc and rate should not accept NULL.
 
 ```sql
--- Paste your SQL code below for Question 6
+CREATE TABLE item ( item_id TEXT PRIMARY KEY, item_desc TEXT NOT NULL, rate INTEGER NOT NULL, icom_id TEXT CHECK(LENGTH(icom_id) = 4), FOREIGN KEY (icom_id) REFERENCES company(com_id) ON UPDATE CASCADE ON DELETE CASCADE );
 ```
 
 **Output:**
 
-![Output6](output.png)
+<img width="843" height="357" alt="image" src="https://github.com/user-attachments/assets/712e8129-cce9-45d5-863d-ad6de54f6513" />
+
 
 **Question 7**
 ---
--- Paste Question 7 here
+Create a table named Events with the following columns:
+
+EventID as INTEGER
+EventName as TEXT
+EventDate as DATE
 
 ```sql
--- Paste your SQL code below for Question 7
+CREATE TABLE Events (EventID INTEGER, EventName TEXT, EventDate DATE);
 ```
 
 **Output:**
 
-![Output7](output.png)
+<img width="919" height="456" alt="image" src="https://github.com/user-attachments/assets/a30ef8d7-73a6-4456-81c8-73849dba3fc1" />
 
 **Question 8**
----
--- Paste Question 8 here
+Write a SQL Query  to add attribute ISBN as varchar(30) and domain_dept as varchar(30) in the table 'books'
 
+ 
 ```sql
--- Paste your SQL code below for Question 8
+ALTER TABLE books ADD ISBN varchar(30); ALTER TABLE books ADD domain_dept varchar(30);
 ```
 
 **Output:**
 
-![Output8](output.png)
+<img width="835" height="397" alt="image" src="https://github.com/user-attachments/assets/a80ea545-396e-4247-b0b6-cbb6d50e0669" />
+
 
 **Question 9**
 ---
--- Paste Question 9 here
 
+Create a table named Attendance with the following constraints:
+AttendanceID as INTEGER should be the primary key.
+EmployeeID as INTEGER should be a foreign key referencing Employees(EmployeeID).
+AttendanceDate as DATE.
+Status as TEXT should be one of 'Present', 'Absent', 'Leave'.
 ```sql
--- Paste your SQL code below for Question 9
+CREATE TABLE Attendance (
+AttendanceID INTEGER PRIMARY KEY,
+EmployeeID INTEGER,
+AttendanceDate DATE,
+Status TEXT CHECK(Status IN('Present','Absent','Leave')),
+FOREIGN KEY (EmployeeID) REFERENCES Employees(EmployeeID));
 ```
 
 **Output:**
 
-![Output9](output.png)
+<img width="850" height="351" alt="image" src="https://github.com/user-attachments/assets/b7da89b5-646f-4761-b70b-c5fc155f6867" />
+
 
 **Question 10**
 ---
--- Paste Question 10 here
+Insert the below data into the Books table, allowing the Publisher and Year columns to take their default values.
+
+ISBN             Title                 Author
+---------------  --------------------  ---------------
+978-6655443321   Big Data Analytics    Karen Adams
+
+Note: The Publisher and Year columns will use their default values.
+ 
 
 ```sql
--- Paste your SQL code below for Question 10
+INSERT INTO Books (ISBN, Title, Author) VALUES ('978-6655443321', 'Big Data Analytics', 'Karen Adams');
 ```
 
 **Output:**
 
-![Output10](output.png)
+<img width="868" height="328" alt="image" src="https://github.com/user-attachments/assets/967926a8-1bff-448b-9ab8-2cd76ff84d20" />
 
 
 ## RESULT
