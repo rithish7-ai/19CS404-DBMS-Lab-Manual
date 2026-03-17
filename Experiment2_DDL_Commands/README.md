@@ -209,10 +209,11 @@ CREATE TABLE contacts (
     email TEXT,
     phone TEXT NOT NULL CHECK (LENGTH(phone) >= 10)
 );
-
+```
 **Output:**
 
-<img width="876" height="382" alt="image" src="https://github.com/user-attachments/assets/a1531876-a387-43f5-9e2f-6317972d8057" />
+ <img width="1234" height="384" alt="image" src="https://github.com/user-attachments/assets/35266800-e523-45b8-a752-f3a2253b66c1" />
+
 
 
 **Question 6**
